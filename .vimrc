@@ -1,24 +1,27 @@
 " General
 " =============================================================================
 set nocompatible
+set list
+set listchars=eol:⏎
 syntax enable
 filetype off
 set nobackup
 set noswapfile
-set number
 set relativenumber
 set laststatus=2
-set colorcolumn=80
+set colorcolumn=81
 set encoding=utf-8
 set fillchars+=vert:\ 
 set mouse=a
 set showcmd
 set tabstop=4
 if has("gui_running")
-    set guifont=Source\ Code\ Pro\ for\ Powerline
-    set guioptions=''
+  set guifont=Droid\ Sans\ Mono\ for\ Powerline
+  set guioptions=''
 else
-    set t_Co=256
+  let g:gruvbox_italic=0 
+  set background=dark
+  set t_Co=256
 endif
 
 " Plugins
@@ -47,7 +50,7 @@ Plug 'juvenn/mustache.vim'
 Plug 'majutsushi/tagbar'
 Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'mhinz/vim-signify'
-Plug 'nanotech/jellybeans.vim'
+Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
 Plug 'shawncplus/phpcomplete.vim'
@@ -65,6 +68,7 @@ call plug#end()            " required
 " =============================================================================
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :Gstatus<CR>
+nnoremap <Leader>gw :Gwrite<CR>
 
 " YouCompleteMe
 " =============================================================================
@@ -143,7 +147,7 @@ let g:airline_powerline_fonts = 1
 " =============================================================================
 nmap <F8> :TagbarToggle<CR>
 
-colorscheme jellybeans
+colorscheme gruvbox
 
 let g:virtualenv_directory='~/.env'
 
