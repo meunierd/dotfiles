@@ -9,7 +9,6 @@ set nobackup
 set noswapfile
 set relativenumber
 set laststatus=2
-set colorcolumn=81
 set encoding=utf-8
 set fillchars+=vert:\ 
 set mouse=a
@@ -64,11 +63,20 @@ Plug 'wavded/vim-stylus'
 
 call plug#end()            " required
 
+" Tabs and Buffers
+nnoremap <Leader>tn :tabn<CR>
+nnoremap <Leader>tp :tabp<CR>
+nnoremap <Leader>tc :tabnew<CR>
+nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bn :bn<CR>
+nnoremap <Leader>bp :bp<CR>
+
 " Fugitive
 " =============================================================================
 nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
+nnoremap <Leader>gc :Gcommit<CR>
 
 " YouCompleteMe
 " =============================================================================
@@ -80,10 +88,12 @@ let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 " =============================================================================
 function! GoyoBefore()
   Limelight
+  set nolist
 endfunction
 
 function! GoyoAfter()
   Limelight!
+  set list
 endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
@@ -107,7 +117,7 @@ if executable('pt')
 endif
 " File Search
 call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern',
-  \ '\(node_modules\|__pycache__\|\.egg\)')
+  \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
 nnoremap <Leader>p :Unite -start-insert file_rec/async<CR>
 
 " VimFiler
@@ -152,5 +162,3 @@ colorscheme gruvbox
 let g:virtualenv_directory='~/.env'
 
 let g:indent_guides_enable_on_vim_startup = 1
-
-nnoremap <Leader>bd :BD<CR>
