@@ -64,6 +64,7 @@ Plug 'wavded/vim-stylus'
 call plug#end()            " required
 
 " Tabs and Buffers
+" =============================================================================
 nnoremap <Leader>tn :tabn<CR>
 nnoremap <Leader>tp :tabp<CR>
 nnoremap <Leader>tc :tabnew<CR>
@@ -77,6 +78,7 @@ nnoremap <Leader>gb :Gblame<CR>
 nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gr :Gread<CR>
 
 " YouCompleteMe
 " =============================================================================
