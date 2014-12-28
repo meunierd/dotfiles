@@ -130,6 +130,7 @@ let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_ignore_pattern = '\(__pycache__\|egg\|^\.\|\.gz$\)'
 function! s:vimfiler_my_settings() "{{{
   nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_expand_or_edit)
+  set norelativenumber
 "}}}
 endfunction
 au FileType vimfiler call s:vimfiler_my_settings()
