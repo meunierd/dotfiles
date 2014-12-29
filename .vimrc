@@ -156,9 +156,14 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" Misc
+" Tagbar
 " =============================================================================
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_compact = 1
+
+" Misc
+" =============================================================================
 
 colorscheme gruvbox
 
