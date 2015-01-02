@@ -63,7 +63,7 @@ Plug 'wavded/vim-stylus'
 
 call plug#end()            " required
 
-" Tabs and Buffers
+" Navigation
 " =============================================================================
 nnoremap <Leader>tn :tabn<CR>
 nnoremap <Leader>tp :tabp<CR>
@@ -71,6 +71,8 @@ nnoremap <Leader>tc :tabnew<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>ln :lnext<CR>
+nnoremap <Leader>lp :lprevious<CR>
 
 " Fugitive
 " =============================================================================
