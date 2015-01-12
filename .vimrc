@@ -63,6 +63,12 @@ Plug 'wavded/vim-stylus'
 
 call plug#end()            " required
 
+" Bootstrap Plugins
+" =============================================================================
+if !isdirectory($HOME . "/.vim/bundle")
+  PlugInstall
+endif
+
 " Navigation
 " =============================================================================
 nnoremap <Leader>tn :tabn<CR>
