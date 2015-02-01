@@ -25,7 +25,10 @@ endif
 
 " Plugins
 " =============================================================================
-call plug#begin('~/.vim/bundle')
+
+let s:vimplugindir = $HOME . "/.vimplugins"
+
+call plug#begin(s:vimplugindir)
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'LeonB/vim-nginx', {'for': 'nginx'}
@@ -63,9 +66,7 @@ Plug 'wavded/vim-stylus'
 
 call plug#end()            " required
 
-" Bootstrap Plugins
-" =============================================================================
-if !isdirectory($HOME . "/.vim/bundle")
+if !isdirectory(s:vimplugindir)
   PlugInstall
 endif
 
@@ -93,6 +94,9 @@ nnoremap <Leader>gr :Gread<CR>
 nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
 let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+let g:ycm_semantic_triggers =  {
+    \   'css': ['    ', ': '],
+    \ }
 
 " Goyo and Limelight
 " =============================================================================
