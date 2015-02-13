@@ -30,12 +30,11 @@ let s:vimplugindir = $HOME . "/.vimplugins"
 
 call plug#begin(s:vimplugindir)
 
-Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 Plug 'LeonB/vim-nginx', {'for': 'nginx'}
-Plug 'Matt-Stevens/vim-systemd-syntax'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
@@ -47,22 +46,22 @@ Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
-Plug 'junegunn/vim-easy-align'
-Plug 'juvenn/mustache.vim'
+Plug 'juvenn/mustache.vim', {'for': 'html'}
 Plug 'majutsushi/tagbar'
 Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'mhinz/vim-signify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
-Plug 'shawncplus/phpcomplete.vim'
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
-Plug 'szw/vim-ctrlspace'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
-Plug 'wavded/vim-stylus'
+Plug 'wavded/vim-stylus', {'for': 'stylus'}
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 
 call plug#end()            " required
 
@@ -128,7 +127,7 @@ if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+  \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
   \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_rec_async_command =
@@ -171,6 +170,7 @@ let g:syntastic_style_warning_symbol = "⚠"
 " vim-airline
 " =============================================================================
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
 " Tagbar
