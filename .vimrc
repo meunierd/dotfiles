@@ -11,6 +11,7 @@ set relativenumber
 set laststatus=2
 set encoding=utf-8
 set fillchars+=vert:\ 
+set backspace=indent,eol,start
 set mouse=a
 set showcmd
 set tabstop=4
@@ -54,6 +55,7 @@ Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
