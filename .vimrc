@@ -79,6 +79,7 @@ nnoremap <Leader>tc :tabnew<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bl :Unite buffer<CR>
 nnoremap <Leader>ln :lnext<CR>
 nnoremap <Leader>lp :lprevious<CR>
 
