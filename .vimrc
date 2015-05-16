@@ -40,7 +40,9 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
 Plug 'bling/vim-airline'
+Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'chase/vim-ansible-yaml'
+Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'groenewege/vim-less'
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
@@ -53,17 +55,18 @@ Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'mhinz/vim-signify'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'phildawes/racer', {'do': 'cargo build --release', 'for': 'rust'}
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'scrooloose/syntastic'
 Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
-Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
+Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
-Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 
 call plug#end()            " required
 
@@ -98,6 +101,7 @@ let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
+    \   'rust': ['::'],
     \ }
 
 " Goyo and Limelight
