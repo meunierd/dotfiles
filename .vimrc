@@ -33,6 +33,8 @@ call plug#begin(s:vimplugindir)
 
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 Plug 'LeonB/vim-nginx', {'for': 'nginx'}
+Plug 'hdima/python-syntax', {'for': 'python'}
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
@@ -97,11 +99,9 @@ nnoremap <Leader>gr :Gread<CR>
 " YouCompleteMe
 " =============================================================================
 nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
-let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
-    \   'rust': ['::'],
+    \   'rust': ['::', '.'],
     \ }
 
 " Goyo and Limelight
@@ -161,7 +161,7 @@ au FileType vimfiler call s:vimfiler_my_settings()
 
 " Ultisnips
 " =============================================================================
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
 " Syntastic
@@ -178,6 +178,7 @@ let g:syntastic_style_warning_symbol = "⚠"
 " =============================================================================
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 
 " Tagbar
@@ -189,7 +190,9 @@ let g:tagbar_compact = 1
 " Misc
 " =============================================================================
 
-colorscheme gruvbox
+colorscheme PaperColor
+
+let python_highlight_all = 1
 
 let g:virtualenv_directory='~/.env'
 
