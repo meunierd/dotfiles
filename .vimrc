@@ -140,9 +140,15 @@ if executable('ag')
   let g:unite_source_rec_async_command =
                   \ 'ag --follow --nocolor --nogroup --hidden -g ""'
 endif
-call unite#custom#source('file_rec,file_rec/async', 'ignore_pattern',
-  \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
-nnoremap <Leader>p :Unite -start-insert file_rec/async<CR>
+if has('nvim')
+  call unite#custom#source('file_rec/neovim', 'ignore_pattern',
+    \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
+  nnoremap <Leader>p :Unite -start-insert file_rec/neovim<CR>
+else
+  call unite#custom#source('file_rec/async', 'ignore_pattern',
+    \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
+  nnoremap <Leader>p :Unite -start-insert file_rec/async<CR>
+endif
 
 " VimFiler
 " =============================================================================
@@ -178,7 +184,6 @@ let g:syntastic_style_warning_symbol = "⚠"
 " =============================================================================
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme = 'papercolor'
 let g:airline_powerline_fonts = 1
 
 " Tagbar
