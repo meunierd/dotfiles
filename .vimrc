@@ -19,7 +19,6 @@ if has("gui_running")
   set guifont=Droid\ Sans\ Mono\ for\ Powerline
   set guioptions=''
 else
-  let g:gruvbox_italic=0 
   set background=dark
   set t_Co=256
 endif
@@ -55,7 +54,6 @@ Plug 'juvenn/mustache.vim', {'for': 'html'}
 Plug 'majutsushi/tagbar'
 Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'mhinz/vim-signify'
-Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'phildawes/racer', {'do': 'cargo build --release', 'for': 'rust'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
