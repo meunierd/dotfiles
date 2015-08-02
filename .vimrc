@@ -10,7 +10,6 @@ set noswapfile
 set relativenumber
 set laststatus=2
 set encoding=utf-8
-set fillchars+=vert:\ 
 set backspace=indent,eol,start
 set mouse=a
 set showcmd
@@ -19,7 +18,6 @@ if has("gui_running")
   set guifont=Droid\ Sans\ Mono\ for\ Powerline
   set guioptions=''
 else
-  set background=dark
   set t_Co=256
 endif
 
