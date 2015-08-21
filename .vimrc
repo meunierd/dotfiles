@@ -114,6 +114,7 @@ endfunction
 
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 let g:limelight_conceal_ctermfg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
 nnoremap <Leader>l :Limelight!!<CR>
 nnoremap <Leader><Space> :Goyo<CR>
 
@@ -134,7 +135,8 @@ if executable('ag')
   \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_rec_async_command =
-                  \ 'ag --follow --nocolor --nogroup --hidden -g ""'
+                  \ ['ag', '--follow', '--nocolor', '--nogroup',
+                  \  '--hidden', '-g', '']
 endif
 if has('nvim')
   call unite#custom#source('file_rec/neovim', 'ignore_pattern',
