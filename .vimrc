@@ -27,9 +27,6 @@ let s:vimplugindir = $HOME . "/.vimplugins"
 
 call plug#begin(s:vimplugindir)
 
-Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
-Plug 'LeonB/vim-nginx', {'for': 'nginx'}
-Plug 'hdima/python-syntax', {'for': 'python'}
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
@@ -37,32 +34,48 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
 Plug 'bling/vim-airline'
-Plug 'cespare/vim-toml', {'for': 'toml'}
-Plug 'chase/vim-ansible-yaml'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
-Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
-Plug 'groenewege/vim-less'
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
-Plug 'juvenn/mustache.vim', {'for': 'html'}
 Plug 'majutsushi/tagbar'
-Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'phildawes/racer', {'do': 'cargo build --release', 'for': 'rust'}
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'scrooloose/syntastic'
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
-Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
-Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
+
+" PHP
+Plug 'vim-php/tagbar-phpctags.vim'
+Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
+
+" Rust
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
+Plug 'phildawes/racer', {'do': 'cargo build --release', 'for': 'rust'}
+Plug 'cespare/vim-toml', {'for': 'toml'}
+
+" Python
+Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'hdima/python-syntax', {'for': 'python'}
+Plug 'jmcantrell/vim-virtualenv'
+
+" Javascript
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
+
+" Stylesheets
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
+Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
+
+" Miscellaneous Filetypes
+Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
+Plug 'LeonB/vim-nginx', {'for': 'nginx'}
+Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
+Plug 'juvenn/mustache.vim', {'for': 'html'}
+Plug 'chase/vim-ansible-yaml'
 
 " Color Schemes
 Plug 'mhartington/oceanic-next'
@@ -70,6 +83,7 @@ Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()            " required
 
+" Bootstrap plugins
 if !isdirectory(s:vimplugindir)
   PlugInstall
 endif
@@ -128,7 +142,6 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 let g:unite_prompt='» '
 " Code Search
 nnoremap <silent> <Leader>/ :<C-u>Unite grep:! -buffer-name=search-buffer<CR>
-" File Search
 if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
@@ -137,6 +150,7 @@ if executable('ag')
     \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
+" File Search
 nnoremap <Leader>p :Unite file_rec/git:--cached:--others:--exclude-standard
   \ -start-insert<CR>
 
