@@ -30,7 +30,6 @@ call plug#begin(s:vimplugindir)
 Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
 Plug 'LeonB/vim-nginx', {'for': 'nginx'}
 Plug 'hdima/python-syntax', {'for': 'python'}
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
@@ -64,6 +63,10 @@ Plug 'tpope/vim-sleuth'
 Plug 'vim-php/tagbar-phpctags.vim'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
+
+" Color Schemes
+Plug 'mhartington/oceanic-next'
+Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()            " required
 
@@ -133,19 +136,9 @@ if executable('ag')
     \ '-i --vimgrep --hidden --ignore ' .
     \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_rec_async_command =
-                  \ ['ag', '--follow', '--nocolor', '--nogroup',
-                  \  '--hidden', '-g', '']
 endif
-if has('nvim')
-  call unite#custom#source('file_rec/neovim', 'ignore_pattern',
-    \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
-  nnoremap <Leader>p :Unite -start-insert file_rec/neovim<CR>
-else
-  call unite#custom#source('file_rec/async', 'ignore_pattern',
-    \ '\(\.tox\|node_modules\|__pycache__\|\.egg\|\.gz$\)')
-  nnoremap <Leader>p :Unite -start-insert file_rec/async<CR>
-endif
+nnoremap <Leader>p :Unite file_rec/git:--cached:--others:--exclude-standard
+  \ -start-insert<CR>
 
 " VimFiler
 " =============================================================================
@@ -182,6 +175,7 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
+let g:airline_theme = 'oceanicnext'
 
 " Tagbar
 " =============================================================================
@@ -192,7 +186,8 @@ let g:tagbar_compact = 1
 " Misc
 " =============================================================================
 
-colorscheme PaperColor
+set background=dark
+colorscheme OceanicNext
 
 let python_highlight_all = 1
 
