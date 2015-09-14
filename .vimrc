@@ -17,6 +17,7 @@ set tabstop=4
 if has("gui_running")
   set guioptions=''
 else
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set t_Co=256
 endif
 
@@ -46,6 +47,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
+Plug 'dag/vim-fish'
 
 " PHP
 Plug 'vim-php/tagbar-phpctags.vim'
@@ -151,7 +153,7 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 " File Search
-nnoremap <Leader>p :Unite file_rec/git:--cached:--others:--exclude-standard
+nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
   \ -start-insert<CR>
 
 " VimFiler
@@ -161,7 +163,7 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = '\(__pycache__\|egg\|^\.\|\.gz$\)'
+let g:vimfiler_ignore_pattern = '\(__pycache__\|egg\|\.pyc$\|^\.\|\.gz$\)'
 function! s:vimfiler_my_settings() "{{{
   nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_expand_or_edit)
   set norelativenumber
