@@ -14,11 +14,16 @@ set backspace=indent,eol,start
 set mouse=a
 set showcmd
 set tabstop=4
+
 if has("gui_running")
   set guioptions=''
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
   set t_Co=256
+endif
+
+if &shell =~# 'fish$'
+    set shell=sh
 endif
 
 " Plugins
@@ -55,7 +60,7 @@ Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'phildawes/racer', {'do': 'cargo build --release', 'for': 'rust'}
+Plug 'racer-rust/vim-racer', {'do': 'cargo build --release', 'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " Python
@@ -156,7 +161,7 @@ endif
 nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
   \ -start-insert<CR>
 
-" VimFiler
+" VimFibler
 " =============================================================================
 nnoremap <Leader>e :VimFilerExplorer<CR>
 let g:vimfiler_tree_closed_icon = '▸'
