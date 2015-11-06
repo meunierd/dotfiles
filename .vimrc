@@ -16,6 +16,7 @@ set showcmd
 set tabstop=4
 
 if has("gui_running")
+  set guifont=Droid\ Sans\ Mono\ For\ Powerline:h11
   set guioptions=''
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -23,7 +24,7 @@ else
 endif
 
 if &shell =~# 'fish$'
-    set shell=sh
+    set shell=bash
 endif
 
 " Plugins
@@ -56,17 +57,19 @@ Plug 'dag/vim-fish'
 
 " PHP
 Plug 'vim-php/tagbar-phpctags.vim'
-Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'racer-rust/vim-racer', {'do': 'cargo build --release', 'for': 'rust'}
+Plug 'racer-rust/vim-racer', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " Python
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'hdima/python-syntax', {'for': 'python'}
 Plug 'jmcantrell/vim-virtualenv'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 
 " Javascript
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
@@ -83,6 +86,9 @@ Plug 'LeonB/vim-nginx', {'for': 'nginx'}
 Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
 Plug 'juvenn/mustache.vim', {'for': 'html'}
 Plug 'chase/vim-ansible-yaml'
+
+" Markdown
+Plug 'tpope/vim-markdown', {'for': 'markdown'}
 
 " Color Schemes
 Plug 'mhartington/oceanic-next'
@@ -114,6 +120,10 @@ nnoremap <Leader>gs :Gstatus<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gr :Gread<CR>
+
+" Markdown
+" =============================================================================
+let g:markdown_fenced_languages = ['sql']
 
 " YouCompleteMe
 " =============================================================================
@@ -215,3 +225,5 @@ let python_highlight_all = 1
 let g:virtualenv_directory='~/.env'
 
 let g:indent_guides_enable_on_vim_startup = 1
+
+let g:racer_cmd='~/.local/src/racer/target/release/racer'
