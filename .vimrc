@@ -29,22 +29,25 @@ endif
 
 " Plugins
 " =============================================================================
-
 let s:vimplugindir = $HOME . "/.vimplugins"
 
 call plug#begin(s:vimplugindir)
+
+" Color Schemes
+Plug 'mhartington/oceanic-next'
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Shougo/unite-outline'
 Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
 Plug 'bling/vim-airline'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
-Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
@@ -54,9 +57,6 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'dag/vim-fish'
-
-" PHP
-Plug 'vim-php/tagbar-phpctags.vim'
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -89,10 +89,6 @@ Plug 'chase/vim-ansible-yaml'
 
 " Markdown
 Plug 'tpope/vim-markdown', {'for': 'markdown'}
-
-" Color Schemes
-Plug 'mhartington/oceanic-next'
-Plug 'NLKNguyen/papercolor-theme'
 
 call plug#end()            " required
 
@@ -206,24 +202,15 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'oceanicnext'
-
-" Tagbar
-" =============================================================================
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_iconchars = ['▸', '▾']
-let g:tagbar_compact = 1
+let g:airline_theme='PaperColor'
 
 " Misc
 " =============================================================================
 
-set background=dark
-colorscheme OceanicNext
+set background=light
+colorscheme PaperColor
 
 let python_highlight_all = 1
-
 let g:virtualenv_directory='~/.env'
-
 let g:indent_guides_enable_on_vim_startup = 1
-
 let g:racer_cmd='~/.local/src/racer/target/release/racer'
