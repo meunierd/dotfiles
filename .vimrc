@@ -1,8 +1,6 @@
 " General
 " =============================================================================
 set nocompatible
-set list
-set listchars=eol:⏎
 syntax enable
 filetype off
 set nobackup
@@ -14,9 +12,11 @@ set backspace=indent,eol,start
 set mouse=a
 set showcmd
 set tabstop=4
+" set list
+" set listchars=eol:\u23CE
 
 if has("gui_running")
-  set guifont=Droid\ Sans\ Mono\ For\ Powerline:h11
+  set guifont=Fira\ Mono\ Medium\ for\ Powerline:h11
   set guioptions=''
 else
   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -43,7 +43,7 @@ Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
 Plug 'SirVer/UltiSnips'
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
 Plug 'bling/vim-airline'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -67,6 +67,9 @@ Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'hdima/python-syntax', {'for': 'python'}
 Plug 'jmcantrell/vim-virtualenv'
+
+" Go
+Plug 'fatih/vim-go', {'for': 'go'}
 
 " Ruby
 Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
@@ -207,7 +210,7 @@ let g:airline_theme='PaperColor'
 " Misc
 " =============================================================================
 
-set background=light
+set background=dark
 colorscheme PaperColor
 
 let python_highlight_all = 1
