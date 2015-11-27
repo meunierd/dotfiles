@@ -73,10 +73,12 @@ Plug 'fatih/vim-go', {'for': 'go'}
 
 " Ruby
 Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
+Plug 'hallison/vim-rdoc', {'for': 'rdoc'}
 
 " Javascript
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
+Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 
 " Stylesheets
 Plug 'wavded/vim-stylus', {'for': 'stylus'}
@@ -122,7 +124,7 @@ nnoremap <Leader>gr :Gread<CR>
 
 " Markdown
 " =============================================================================
-let g:markdown_fenced_languages = ['sql']
+let g:markdown_fenced_languages = ['sql', 'yaml']
 
 " YouCompleteMe
 " =============================================================================
@@ -169,6 +171,8 @@ endif
 " File Search
 nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
   \ -start-insert<CR>
+" Tags
+nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 
 " VimFibler
 " =============================================================================
