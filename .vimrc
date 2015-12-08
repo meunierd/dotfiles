@@ -53,6 +53,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
@@ -198,6 +200,7 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 " =============================================================================
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_python_checkers=['flake8']
+let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_python_flake8_args="--max-complexity 10"
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
@@ -209,6 +212,8 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 let g:airline_theme='PaperColor'
 
 " Misc
