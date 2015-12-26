@@ -43,7 +43,7 @@ Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
 Plug 'SirVer/UltiSnips'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --tern-completer'}
 Plug 'bling/vim-airline'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -79,7 +79,6 @@ Plug 'hallison/vim-rdoc', {'for': 'rdoc'}
 
 " Javascript
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'marijnh/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
 
 " Stylesheets
