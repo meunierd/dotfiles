@@ -43,7 +43,7 @@ Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
 Plug 'SirVer/UltiSnips'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --tern-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --tern-completer --racer-completer'}
 Plug 'bling/vim-airline'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
@@ -62,7 +62,6 @@ Plug 'dag/vim-fish'
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 
 " Python
@@ -130,9 +129,9 @@ let g:markdown_fenced_languages = ['sql', 'yaml']
 " YouCompleteMe
 " =============================================================================
 nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
+let g:ycm_rust_src_path = '/usr/local/rust/rust-1.5.0/src'
 let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
-    \   'rust': ['::', '.'],
     \ }
 
 " Goyo and Limelight
@@ -165,7 +164,7 @@ if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-    \ '-i --vimgrep --hidden --ignore ' .
+    \ '--vimgrep --hidden --ignore ' .
     \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
@@ -175,7 +174,7 @@ nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
 " Tags
 nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 
-" VimFibler
+" VimFiler
 " =============================================================================
 nnoremap <Leader>e :VimFilerExplorer<CR>
 let g:vimfiler_tree_closed_icon = '▸'
