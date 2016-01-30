@@ -163,14 +163,18 @@ nnoremap <silent> <Leader>/ :<C-u>Unite grep:! -buffer-name=search-buffer<CR>
 if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-    \ '--vimgrep --hidden --ignore ' .
+  let g:unite_source_grep_default_opts = '--vimgrep --hidden --ignore ' .
     \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
 " File Search
-nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
-  \ -start-insert<CR>
+
+if has('nvim')
+  nnoremap <Leader>p :Unite file_rec/neovim -start-insert<CR>
+else
+  nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
+    \ -start-insert<CR>
+endif
 " Tags
 nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 
