@@ -8,12 +8,12 @@ set noswapfile
 set relativenumber
 set laststatus=2
 set encoding=utf-8
+set fillchars=vert:\┃
+set noshowmode
 set backspace=indent,eol,start
 set mouse=a
 set showcmd
 set tabstop=4
-" set list
-" set listchars=eol:\u23CE
 
 if has("gui_running")
   set guifont=Fira\ Mono\ Medium\ for\ Powerline:h11
@@ -24,8 +24,10 @@ else
 endif
 
 if &shell =~# 'fish$'
-    set shell=bash
+  set shell=bash
 endif
+
+let g:python_host_prog = '/usr/bin/python'
 
 " Plugins
 " =============================================================================
@@ -34,7 +36,6 @@ let s:vimplugindir = $HOME . "/.vimplugins"
 call plug#begin(s:vimplugindir)
 
 " Color Schemes
-Plug 'mhartington/oceanic-next'
 Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'Raimondi/delimitMate'
@@ -44,7 +45,6 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
 Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --tern-completer --racer-completer'}
-Plug 'bling/vim-airline'
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
@@ -59,6 +59,9 @@ Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'dag/vim-fish'
+Plug 'janko-m/vim-test'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -75,6 +78,7 @@ Plug 'fatih/vim-go', {'for': 'go'}
 " Ruby
 Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 Plug 'hallison/vim-rdoc', {'for': 'rdoc'}
+Plug 'tpope/vim-bundler'
 
 " Javascript
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
@@ -129,6 +133,8 @@ let g:markdown_fenced_languages = ['sql', 'yaml']
 " YouCompleteMe
 " =============================================================================
 nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_python_binary_path = substitute(system("fish -c 'which python'"), '\n\+$', '', '')
 let g:ycm_rust_src_path = '/usr/local/rust/rust-1.5.0/src'
 let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
@@ -169,18 +175,14 @@ if executable('ag')
 endif
 " File Search
 
-if has('nvim')
-  nnoremap <Leader>p :Unite file_rec/neovim -start-insert<CR>
-else
-  nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
-    \ -start-insert<CR>
-endif
+nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
+  \ -start-insert<CR>
 " Tags
 nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 
 " VimFiler
 " =============================================================================
-nnoremap <Leader>e :VimFilerExplorer<CR>
+nnoremap <Leader>e :VimFilerExplorer -winwidth=60<CR>
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_leaf_icon = ' '
@@ -209,15 +211,6 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "⚠"
 let g:syntastic_style_warning_symbol = "⚠"
 
-" vim-airline
-" =============================================================================
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_theme='PaperColor'
-
 " Misc
 " =============================================================================
 
@@ -225,6 +218,13 @@ set background=dark
 colorscheme PaperColor
 
 let python_highlight_all = 1
-let g:virtualenv_directory='~/.env'
 let g:indent_guides_enable_on_vim_startup = 1
-let g:racer_cmd='~/.local/src/racer/target/release/racer'
+
+if has('nvim')
+  let g:test#strategy = "neovim"
+else
+  let g:test#strategy = "vimshell"
+end
+
+let g:airline_theme='jellybeans'
+let g:airline_powerline_fonts = 1
