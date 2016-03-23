@@ -49,7 +49,6 @@ Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'mhinz/vim-signify'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -214,11 +213,10 @@ let g:syntastic_style_warning_symbol = "⚠"
 " Misc
 " =============================================================================
 
-set background=dark
+set background=light
 colorscheme PaperColor
 
 let python_highlight_all = 1
-let g:indent_guides_enable_on_vim_startup = 1
 
 if has('nvim')
   let g:test#strategy = "neovim"
@@ -226,5 +224,7 @@ else
   let g:test#strategy = "vimshell"
 end
 
-let g:airline_theme='jellybeans'
+let g:airline_theme = 'cool'
 let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
