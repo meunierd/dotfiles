@@ -1,4 +1,5 @@
 .vim/init.vim
+.vim/autoload/plug.vim.old
 .config/fish/fish_history
 .config/fish/fishd*
 .config/fish/generated_completions

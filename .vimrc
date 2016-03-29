@@ -49,13 +49,15 @@ Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
 Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'mhinz/vim-signify'
-Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'dag/vim-fish'
 Plug 'janko-m/vim-test'
@@ -199,16 +201,6 @@ au FileType vimfiler call s:vimfiler_my_settings()
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
 
-" Syntastic
-" =============================================================================
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_python_checkers=['flake8']
-let g:syntastic_ruby_checkers=['rubocop']
-let g:syntastic_python_flake8_args="--max-complexity 10"
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_style_error_symbol = "⚠"
-let g:syntastic_style_warning_symbol = "⚠"
 
 " Misc
 " =============================================================================
@@ -228,3 +220,5 @@ let g:airline_theme = 'cool'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+
+autocmd! BufWritePost * Neomake
