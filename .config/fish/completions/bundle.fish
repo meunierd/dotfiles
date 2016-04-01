@@ -13,22 +13,6 @@ function __fish_rake_tasks
     cat "$cache_file"
 end
 
-function __fish_bundle_subcommands
-    set -l cmd (commandline -poc)
-    set -e cmd[1]
-    if test (count $argv) != (count $cmd)
-        return 1
-    end
-    while test -n "$cmd"
-        if test $cmd[1] != $argv[1]
-            return 1
-        end
-        set -e cmd[1]
-        set -e argv[1]
-    end
-    return 0
-end
-
 function __fish_bundle_binstubs
     mkdir -p $HOME/.cache/bundle_binstubs/fetch_head
 
@@ -65,16 +49,16 @@ function __fish_bundle_gems
 end
 
 
-complete -c bundle -n '__fish_bundle_subcommands exec rake' -x -a '(__fish_rake_tasks)'
+complete -c bundle -n '__fish_use_subcommands exec rake' -x -a '(__fish_rake_tasks)'
 
-complete -c bundle -n '__fish_bundle_subcommands exec' -x -a '(__fish_bundle_binstubs)'
+complete -c bundle -n '__fish_use_subcommands exec' -x -a '(__fish_bundle_binstubs)'
 
-complete -c bundle -n '__fish_bundle_subcommands exec rails' -x -a 'generate' -d 'Generate new code'
-complete -c bundle -n '__fish_bundle_subcommands exec rails' -x -a 'console' -d 'Start the Rails console'
-complete -c bundle -n '__fish_bundle_subcommands exec rails' -x -a 'server' -d 'Start the Rails server'
-complete -c bundle -n '__fish_bundle_subcommands exec rails' -x -a 'server' -d 'Start the Rails server'
-complete -c bundle -n '__fish_bundle_subcommands exec rails' -x -a 'dbconsole' -d 'Start a console for the database specified in config/database.yml'
-complete -c bundle -n '__fish_bundle_subcommands exec rails generate' -x -a '(__fish_rails_generators)'
+complete -c bundle -n '__fish_use_subcommands exec rails' -x -a 'generate' -d 'Generate new code'
+complete -c bundle -n '__fish_use_subcommands exec rails' -x -a 'console' -d 'Start the Rails console'
+complete -c bundle -n '__fish_use_subcommands exec rails' -x -a 'server' -d 'Start the Rails server'
+complete -c bundle -n '__fish_use_subcommands exec rails' -x -a 'server' -d 'Start the Rails server'
+complete -c bundle -n '__fish_use_subcommands exec rails' -x -a 'dbconsole' -d 'Start a console for the database specified in config/database.yml'
+complete -c bundle -n '__fish_use_subcommands exec rails generate' -x -a '(__fish_rails_generators)'
 
 
 complete -c bundle -n '__fish_use_subcommand' -x -a 'install' -d 'Install the gems specified by the Gemfile or Gemfile.lock'
@@ -94,5 +78,5 @@ complete -c bundle -n '__fish_use_subcommand' -x -a 'viz' -d 'Generate a visual 
 complete -c bundle -n '__fish_use_subcommand' -x -a 'init' -d 'Generate a simple Gemfile, placed in the current directory'
 complete -c bundle -n '__fish_use_subcommand' -x -a 'clean' -d 'Cleans up unused gems in your bundler directory'
 
-complete -c bundle -n '__fish_bundle_subcommands show' -x -a '(__fish_bundle_gems)'
-complete -c bundle -n '__fish_bundle_subcommands open' -x -a '(__fish_bundle_gems)'
+complete -c bundle -n '__fish_use_subcommands show' -x -a '(__fish_bundle_gems)'
+complete -c bundle -n '__fish_use_subcommands open' -x -a '(__fish_bundle_gems)'
