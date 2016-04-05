@@ -78,5 +78,6 @@ complete -c bundle -n '__fish_use_subcommand' -x -a 'viz' -d 'Generate a visual 
 complete -c bundle -n '__fish_use_subcommand' -x -a 'init' -d 'Generate a simple Gemfile, placed in the current directory'
 complete -c bundle -n '__fish_use_subcommand' -x -a 'clean' -d 'Cleans up unused gems in your bundler directory'
 
+complete -c bundle -n '__fish_use_subcommands update' -x -a '(__fish_bundle_gems)'
 complete -c bundle -n '__fish_use_subcommands show' -x -a '(__fish_bundle_gems)'
 complete -c bundle -n '__fish_use_subcommands open' -x -a '(__fish_bundle_gems)'
