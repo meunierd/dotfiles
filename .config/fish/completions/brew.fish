@@ -21,3 +21,11 @@ complete -c brew -n '__fish_use_subcommands cask uninstall' -x -a '(brew cask li
 complete -c brew -n '__fish_use_subcommands cask zap' -x -a '(brew cask list)'
 complete -c brew -n '__fish_use_subcommands cask install' -x -a '(brew cask search)'
 complete -c brew -n '__fish_use_subcommands cask info' -x -a '(brew cask search)'
+
+complete -c brew -n '__fish_use_subcommands services' -x -a 'list' -d 'List all services managed by `brew services`'
+complete -c brew -n '__fish_use_subcommands services' -x -a 'cleanup' -d 'Get rid of state services and unused plists'
+complete -c brew -n '__fish_use_subcommands services' -x -a 'restart' -d 'Gracefully restart service(s)'
+complete -c brew -n '__fish_use_subcommands services' -x -a 'start' -d 'Start service(s)'
+complete -c brew -n '__fish_use_subcommands services' -x -a 'stop' -d 'Stop service(s)'
+
+complete -c brew -n '__fish_use_subcommands install' -x -a '(brew search)'
