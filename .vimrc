@@ -27,6 +27,8 @@ if &shell =~# 'fish$'
   set shell=bash
 endif
 
+map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
 let g:python_host_prog = '/usr/bin/python'
 
 " Plugins
@@ -40,14 +42,12 @@ Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim', {'on': 'VimFilerExplorer'}
+Plug 'Shougo/vimfiler.vim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/unite-outline'
-Plug 'SirVer/UltiSnips'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer --tern-completer --racer-completer'}
 Plug 'dhruvasagar/vim-prosession', {'on': 'Prosession'}
 Plug 'junegunn/goyo.vim', {'on': 'Goyo'}
-Plug 'junegunn/limelight.vim', {'on': 'Limelight'}
 Plug 'mhinz/vim-signify'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-commentary'
@@ -62,7 +62,6 @@ Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
 Plug 'dag/vim-fish'
 Plug 'janko-m/vim-test'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " Rust
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
@@ -127,6 +126,12 @@ nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gc :Gcommit<CR>
 nnoremap <Leader>gr :Gread<CR>
 
+" vim-test
+" =============================================================================
+nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>tn :TestNearest<CR>
+nnoremap <Leader>ts :TestSuite<CR>
+
 " Markdown
 " =============================================================================
 let g:markdown_fenced_languages = ['sql', 'yaml']
@@ -136,28 +141,10 @@ let g:markdown_fenced_languages = ['sql', 'yaml']
 nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_python_binary_path = substitute(system("fish -c 'which python'"), '\n\+$', '', '')
-let g:ycm_rust_src_path = '/usr/local/rust/rust-1.5.0/src'
+let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.8.0/src'
 let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
     \ }
-
-" Goyo and Limelight
-" =============================================================================
-function! GoyoBefore()
-  Limelight
-  set nolist
-endfunction
-
-function! GoyoAfter()
-  Limelight!
-  set list
-endfunction
-
-let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-let g:limelight_conceal_ctermfg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-nnoremap <Leader>l :Limelight!!<CR>
-nnoremap <Leader><Space> :Goyo<CR>
 
 " Unite
 " =============================================================================
@@ -184,10 +171,10 @@ nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 " VimFiler
 " =============================================================================
 nnoremap <Leader>e :VimFilerExplorer -winwidth=60<CR>
+let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_ignore_pattern = '\(__pycache__\|egg\|\.pyc$\|^\.\|\.gz$\)'
 function! s:vimfiler_my_settings() "{{{
   nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_expand_or_edit)
@@ -196,16 +183,10 @@ function! s:vimfiler_my_settings() "{{{
 endfunction
 au FileType vimfiler call s:vimfiler_my_settings()
 
-" Ultisnips
-" =============================================================================
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snips"]
-
-
 " Misc
 " =============================================================================
 
-set background=light
+set background=dark
 colorscheme PaperColor
 
 let python_highlight_all = 1
@@ -216,7 +197,7 @@ else
   let g:test#strategy = "vimshell"
 end
 
-let g:airline_theme = 'cool'
+let g:airline_theme='PaperColor'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
