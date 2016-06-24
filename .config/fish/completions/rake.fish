@@ -7,7 +7,7 @@ function __fish_rake_tasks
     set -l fetch_head "$HOME/.cache/rake_completions/fetch_head/$pwd_hash"
 
     if begin not test -f $fetch_head; or test (cat .git/FETCH_HEAD | md5) != (cat $fetch_head); end
-        bundle exec rake -T 2>&1 | awk '{ print $2 }' > "$cache_file"
+        rake -P 2>&1 | grep '^rake' | awk '{ print $2 }' > "$cache_file"
         cat .git/FETCH_HEAD | md5 > $fetch_head
     end
     cat "$cache_file"
