@@ -39,7 +39,8 @@ call plug#begin(s:vimplugindir)
 
 " Color Schemes
 Plug 'NLKNguyen/papercolor-theme'
-
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimfiler.vim'
@@ -108,9 +109,6 @@ endif
 
 " Navigation
 " =============================================================================
-nnoremap <Leader>tn :tabn<CR>
-nnoremap <Leader>tp :tabp<CR>
-nnoremap <Leader>tc :tabnew<CR>
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <Leader>bp :bp<CR>
@@ -146,25 +144,10 @@ let g:ycm_semantic_triggers =  {
     \   'css': ['    ', ': '],
     \ }
 
-" Unite
-" =============================================================================
 " General
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-let g:unite_prompt='» '
 " Code Search
-nnoremap <silent> <Leader>/ :<C-u>Unite grep:! -buffer-name=search-buffer<CR>
-if executable('ag')
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--vimgrep --hidden --ignore ' .
-    \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-endif
-" File Search
-
-nnoremap <Leader>p :Unite file_rec/git:--others:--cached:--exclude-standard
-  \ -start-insert<CR>
+nnoremap <silent> <Leader>/ :Ag<CR>
+nnoremap <Leader>p :Files<CR>
 " Tags
 nnoremap <Leader>c :Unite outline -vertical -direction=dynamicbottom<CR>
 
@@ -199,7 +182,7 @@ end
 
 let g:airline_theme='PaperColor'
 let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 
 autocmd! BufWritePost * Neomake
