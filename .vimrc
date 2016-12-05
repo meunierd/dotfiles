@@ -20,7 +20,9 @@ if has("gui_running")
   set guifont=Fira\ Mono\ Medium\ for\ Powerline:h11
   set guioptions=''
 else
-  set termguicolors
+  if has('nvim')
+    set termguicolors
+  end
   set t_Co=256
 endif
 
@@ -32,81 +34,8 @@ map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR
 
 let g:python_host_prog = '/usr/bin/python'
 
-" Plugins
-" =============================================================================
-let s:vimplugindir = $HOME . "/.vimplugins"
-
-call plug#begin(s:vimplugindir)
-
-" Color Schemes
-Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'vim-airline/vim-airline'
-
-" File/Project Management
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-Plug 'Raimondi/delimitMate'
-Plug 'Valloric/YouCompleteMe',
-  \ {'do': './install.py --gocode-completer --tern-completer --racer-completer'}
-Plug 'mhinz/vim-signify'
-Plug 'benekastah/neomake'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'vim-scripts/bufkill.vim', {'on': 'BD'}
-Plug 'dag/vim-fish'
-Plug 'janko-m/vim-test'
-Plug 'mgrabovsky/vim-cuesheet', {'for': 'cuesheet'}
-
-" Rust
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'cespare/vim-toml', {'for': 'toml'}
-
-" Python
-Plug 'hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'hdima/python-syntax'
-Plug 'jmcantrell/vim-virtualenv'
-
-" Go
-Plug 'fatih/vim-go', {'for': 'go'}
-
-" Ruby
-Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
-Plug 'hallison/vim-rdoc', {'for': 'rdoc'}
-Plug 'tpope/vim-bundler'
-
-" Javascript
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
-
-" Stylesheets
-Plug 'wavded/vim-stylus', {'for': 'stylus'}
-Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'sophacles/vim-bundle-mako', {'for': 'mako'}
-
-" Miscellaneous Filetypes
-Plug 'Glench/Vim-Jinja2-Syntax', {'for': 'jinja'}
-Plug 'LeonB/vim-nginx', {'for': 'nginx'}
-Plug 'ekalinin/Dockerfile.vim', {'for': 'Dockerfile'}
-Plug 'juvenn/mustache.vim', {'for': 'html'}
-Plug 'chase/vim-ansible-yaml'
-
-" Markdown
-Plug 'tpope/vim-markdown', {'for': 'markdown'}
-
-call plug#end()            " required
-
-" Bootstrap plugins
-if !isdirectory(s:vimplugindir)
-  PlugInstall
-endif
+execute pathogen#infect()
+call pathogen#helptags()
 
 " Navigation
 " =============================================================================
@@ -132,8 +61,6 @@ nnoremap <Leader>ts :TestSuite<CR>
 
 if has('nvim')
   let g:test#strategy = "neovim"
-else
-  let g:test#strategy = "vimshell"
 end
 
 " Markdown
@@ -160,7 +87,7 @@ let g:ycm_semantic_triggers =  {
 
 " fzf.vim
 " =============================================================================
-nnoremap <Leader>p :Files<CR>
+nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>/ :Rg 
 
 " Neomake
@@ -176,15 +103,25 @@ function! neomake#makers#ft#ruby#rubocop()
       \ }
 endfunction
 
+" vim-airline
+" =============================================================================
+let g:airline_left_sep = '»'
+let g:airline_left_alt_sep = '|'
+let g:airline_right_sep = '«'
+let g:airline_right_alt_sep = '|'
+
 " Misc
 " =============================================================================
 
-colorscheme PaperColor
+nnoremap <Leader>e :NERDTreeToggle<CR>
 
+colorscheme PaperColor
 let python_highlight_all = 1
 
 command! RubocopAutoCorrect
   \ execute ':silent ! bundle exec rubocop --auto-correct % > /dev/null 2>&1'
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, <bang>0)
+execute pathogen#infect()
+call pathogen#helptags()
