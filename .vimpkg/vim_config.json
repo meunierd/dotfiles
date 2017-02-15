@@ -288,6 +288,18 @@
             "name": "vim-markdown",
             "pkg-url": "https://github.com/tpope/vim-markdown.git",
             "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "fzf.vim",
+            "pkg-url": "https://github.com/junegunn/fzf.vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-airline-themes",
+            "pkg-url": "https://github.com/vim-airline/vim-airline-themes.git",
+            "recipe": {}
         }
     ]
 }

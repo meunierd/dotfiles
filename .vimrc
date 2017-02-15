@@ -2,7 +2,7 @@
 " =============================================================================
 set nocompatible
 syntax enable
-filetype off
+filetype plugin indent on
 set nobackup
 set noswapfile
 set relativenumber
@@ -109,6 +109,7 @@ let g:airline_left_sep = '»'
 let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = '«'
 let g:airline_right_alt_sep = '|'
+let g:airline_theme='papercolor'
 
 " Misc
 " =============================================================================
