@@ -37,6 +37,12 @@ let g:python_host_prog = '/usr/bin/python'
 execute pathogen#infect()
 call pathogen#helptags()
 
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
 " Navigation
 " =============================================================================
 nnoremap <Leader>bd :bd<CR>
@@ -45,23 +51,20 @@ nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>ln :lnext<CR>
 nnoremap <Leader>lp :lprevious<CR>
 
-" Fugitive
+" Gita
 " =============================================================================
-nnoremap <Leader>gb :Gblame<CR>
-nnoremap <Leader>gs :Gstatus<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gr :Gread<CR>
+nnoremap <Leader>gb :Gita blame<CR>
+nnoremap <Leader>gs :Gita status<CR>
 
 " vim-test
 " =============================================================================
-nnoremap <Leader>tf :TestFile<CR>
-nnoremap <Leader>tn :TestNearest<CR>
-nnoremap <Leader>ts :TestSuite<CR>
-
 if has('nvim')
   let g:test#strategy = "neovim"
 end
+
+nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>tn :TestNearest<CR>
+nnoremap <Leader>ts :TestSuite<CR>
 
 " Markdown
 " =============================================================================
@@ -77,7 +80,6 @@ let g:rubycomplete_debug = 1
 
 " YouCompleteMe
 " =============================================================================
-nnoremap <Leader>d :YcmCompleter GoToDeclaration<CR>
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_python_binary_path = substitute(system("fish -c 'which python'"), '\n\+$', '', '')
 let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.11.0/src'
@@ -87,8 +89,13 @@ let g:ycm_semantic_triggers =  {
 
 " fzf.vim
 " =============================================================================
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, <bang>0)
+
 nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>/ :Rg 
+nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
+nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
 
 " Neomake
 " =============================================================================
@@ -121,8 +128,3 @@ let python_highlight_all = 1
 
 command! RubocopAutoCorrect
   \ execute ':silent ! bundle exec rubocop --auto-correct % > /dev/null 2>&1'
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1, <bang>0)
-execute pathogen#infect()
-call pathogen#helptags()

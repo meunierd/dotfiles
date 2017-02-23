@@ -300,6 +300,30 @@
             "name": "vim-airline-themes",
             "pkg-url": "https://github.com/vim-airline/vim-airline-themes.git",
             "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-terraform",
+            "pkg-url": "https://github.com/hashivim/vim-terraform.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "goyo.vim",
+            "pkg-url": "https://github.com/junegunn/goyo.vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-gita",
+            "pkg-url": "https://github.com/lambdalisue/vim-gita.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-easy-align",
+            "pkg-url": "https://github.com/junegunn/vim-easy-align.git",
+            "recipe": {}
         }
     ]
 }
