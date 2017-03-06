@@ -315,14 +315,26 @@
         },
         {
             "depends-on": [],
-            "name": "vim-gita",
-            "pkg-url": "https://github.com/lambdalisue/vim-gita.git",
+            "name": "vim-easy-align",
+            "pkg-url": "https://github.com/junegunn/vim-easy-align.git",
             "recipe": {}
         },
         {
             "depends-on": [],
-            "name": "vim-easy-align",
-            "pkg-url": "https://github.com/junegunn/vim-easy-align.git",
+            "name": "ensime-vim",
+            "pkg-url": "https://github.com/ensime/ensime-vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-scala",
+            "pkg-url": "https://github.com/derekwyatt/vim-scala.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "gina.vim",
+            "pkg-url": "https://github.com/lambdalisue/gina.vim.git",
             "recipe": {}
         }
     ]

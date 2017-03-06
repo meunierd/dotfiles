@@ -14,7 +14,7 @@ set backspace=indent,eol,start
 set mouse=a
 set showcmd
 set tabstop=4
-set background=light
+set background=dark
 
 if has("gui_running")
   set guifont=Fira\ Mono\ Medium\ for\ Powerline:h11
@@ -22,6 +22,7 @@ if has("gui_running")
 else
   if has('nvim')
     set termguicolors
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
   end
   set t_Co=256
 endif
@@ -110,6 +111,13 @@ function! neomake#makers#ft#ruby#rubocop()
       \ }
 endfunction
 
+" Scala
+" =============================================================================
+
+autocmd BufWritePost *.scala :EnTypeCheck
+command! SbtCompile
+  \ execute ':belowright split | :resize 15 | :terminal sbt ~compile'
+
 " vim-airline
 " =============================================================================
 let g:airline_left_sep = '»'
@@ -125,6 +133,5 @@ nnoremap <Leader>e :NERDTreeToggle<CR>
 
 colorscheme PaperColor
 let python_highlight_all = 1
-
 command! RubocopAutoCorrect
   \ execute ':silent ! bundle exec rubocop --auto-correct % > /dev/null 2>&1'
