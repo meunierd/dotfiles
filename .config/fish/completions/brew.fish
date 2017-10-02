@@ -1,5 +1,13 @@
 # Cask
 
+function __fish_brew_services_started
+  brew services list | awk '/started/ { print $1 }'
+end
+
+function __fish_brew_services_stopped
+  brew services list | awk '/stopped/ { print $1 }'
+end
+
 complete -c brew -n '__fish_seen_subcommand_from cask' -x -a 'audit' -d 'verifies installability of Casks'
 complete -c brew -n '__fish_seen_subcommand_from cask' -x -a 'cat' -d 'dump raw source of the given Cask to the standard output'
 complete -c brew -n '__fish_seen_subcommand_from cask' -x -a 'cleanup' -d 'cleans up cached downloads and tracker symlinks'
@@ -30,3 +38,5 @@ complete -c brew -n '__fish_seen_subcommand_from services' -x -a 'stop' -d 'Stop
 
 complete -c brew -n '__fish_seen_subcommand_from install' -x -a '(brew search)'
 complete -c brew -n '__fish_seen_subcommand_from uninstall' -x -a '(brew list)'
+complete -c brew -n '__fish_seen_subcommand_from services start' -x -a '(__fish_brew_services_stopped)'
+complete -c brew -n '__fish_seen_subcommand_from services stop' -x -a '(__fish_brew_services_started)'

@@ -83,12 +83,6 @@
         },
         {
             "depends-on": [],
-            "name": "neomake",
-            "pkg-url": "https://github.com/neomake/neomake.git",
-            "recipe": {}
-        },
-        {
-            "depends-on": [],
             "name": "vim-fugitive",
             "pkg-url": "https://github.com/tpope/vim-fugitive.git",
             "recipe": {}
@@ -116,37 +110,6 @@
             "name": "vim-signify",
             "pkg-url": "https://github.com/mhinz/vim-signify.git",
             "recipe": {}
-        },
-        {
-            "depends-on": [
-                {
-                    "name": "brew",
-                    "recipe": {
-                        "all": [],
-                        "darwin": [
-                            "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
-                        ]
-                    }
-                },
-                {
-                    "name": "node",
-                    "recipe": {
-                        "darwin": [
-                            "brew install node"
-                        ],
-                        "linux": [
-                            "sudo apt-get install -y node npm"
-                        ]
-                    }
-                }
-            ],
-            "name": "tern_for_vim",
-            "pkg-url": "https://github.com/ternjs/tern_for_vim.git",
-            "recipe": {
-                "all": [
-                    "npm install"
-                ]
-            }
         },
         {
             "depends-on": [],
@@ -335,6 +298,66 @@
             "depends-on": [],
             "name": "gina.vim",
             "pkg-url": "https://github.com/lambdalisue/gina.vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-maven-plugin",
+            "pkg-url": "https://github.com/mikelue/vim-maven-plugin.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "limelight.vim",
+            "pkg-url": "https://github.com/junegunn/limelight.vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "ale",
+            "pkg-url": "https://github.com/w0rp/ale.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vader.vim",
+            "pkg-url": "https://github.com/junegunn/vader.vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "UltiSnips",
+            "pkg-url": "https://github.com/sirver/UltiSnips.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "vim-graphql",
+            "pkg-url": "https://github.com/jparise/vim-graphql.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "LanguageClient-neovim",
+            "pkg-url": "https://github.com/autozimu/LanguageClient-neovim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "nvim-completion-manager",
+            "pkg-url": "https://github.com/roxma/nvim-completion-manager.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "typescript-vim",
+            "pkg-url": "https://github.com/leafgarland/typescript-vim.git",
+            "recipe": {}
+        },
+        {
+            "depends-on": [],
+            "name": "ncm-github",
+            "pkg-url": "https://github.com/meunierd/ncm-github.git",
             "recipe": {}
         }
     ]
