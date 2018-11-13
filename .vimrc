@@ -17,7 +17,7 @@ set tabstop=4
 set background=dark
 set signcolumn=yes
 set termguicolors
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=2
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set t_Co=256
 
 au BufNewFile,BufRead *.ejson setfiletype json
@@ -47,6 +47,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vader.vim'
 Plug 'kchmck/vim-coffee-script'
 Plug 'majutsushi/tagbar'
 Plug 'mgrabovsky/vim-cuesheet'
@@ -136,12 +137,15 @@ let g:airline_powerline_fonts = 1
 
 " ale
 " =============================================================================
-let g:ale_linters = {'java': [], 'fish': [], 'python': []}
-let g:ale_fixers = {'ruby': 'rubocop'}
+let g:ale_linters = {'fish': [], 'python': ['pyls']}
+let g:ale_fixers = {'ruby': 'rubocop', 'sql': 'sqlfmt'}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 let g:ale_ruby_rubocop_executable = 'bin/rubocop'
+let g:ale_java_javalsp_jar = '/Users/meunierd/src/java-language-server/out/fat-jar.jar'
 let g:ale_sign_column_always = 1
+nnoremap <Leader>ah :ALEHover<CR>
+nnoremap <Leader>ag :ALEGoToDefinition<CR>
 
 " Formatting
 " =============================================================================
@@ -155,6 +159,8 @@ command! URLDecode
 
 let g:gina#command#blame#formatter#format = '%au %=on %ti %ma%in'
 nnoremap <Leader>gb :Gina blame<CR>
+nnoremap <Leader>gB :Gina browse :<CR>
+nnoremap <Leader>gw :Gina add %<CR>
 
 " Misc
 " =============================================================================
