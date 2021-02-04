@@ -6,7 +6,7 @@
 	"suggest.timeout": 15000,
 	"languageserver": {
 		"sorbet": {
-			"command": "srb",
+			"command": "./bin/srb",
 			"args": [
 				"tc",
 				"--typed",
