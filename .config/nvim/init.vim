@@ -4,6 +4,7 @@ set encoding=utf-8
 scriptencoding utf-8
 syntax enable
 filetype plugin indent on
+set exrc
 set nobackup
 set noswapfile
 set relativenumber
@@ -21,7 +22,10 @@ set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr
 set t_Co=256
 
 au BufNewFile,BufRead *.ejson setfiletype json
+au BufNewFile,BufRead *.lpl setfiletype json
 au BufRead,BufNewFile Pipfile setfiletype toml
+au BufReadPre *.nfo :setlocal fileencodings=cp437,utf-8
+au BufReadPre *.nfo :setlocal norelativenumber
 
 if &shell =~# 'fish$'
   set shell=bash
@@ -32,14 +36,7 @@ map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR
 call plug#begin('~/.vimpkg/bundle')
 
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'Raimondi/delimitMate'
-Plug 'cespare/vim-toml'
-Plug 'dag/vim-fish', { 'for': 'fish' }
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'hashivim/vim-terraform'
-Plug 'hdima/python-syntax'
-Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -48,41 +45,54 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vader.vim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'majutsushi/tagbar'
-Plug 'mgrabovsky/vim-cuesheet'
 Plug 'mhinz/vim-signify'
-Plug 'pangloss/vim-javascript'
-Plug 'uarun/vim-protobuf'
-Plug 'leafgarland/typescript-vim'
-Plug 'morhetz/gruvbox'
-Plug 'jparise/vim-graphql'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-abbrfuzzy'
-Plug 'roxma/nvim-yarp'
-Plug 'rust-lang/rust.vim'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'lambdalisue/gina.vim'
-Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dadbod'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'Shopify/shadowenv.vim'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
+
+" Colorschemes
+Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
+
+" Language Support + Syntax Highlighting
+Plug 'cespare/vim-toml'
+Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'fatih/vim-go'
+Plug 'uarun/vim-protobuf'
+Plug 'mgrabovsky/vim-cuesheet'
+Plug 'kchmck/vim-coffee-script'
+Plug 'rhysd/vim-syntax-codeowners'
+Plug 'tpope/vim-markdown'
+Plug 'alisdair/vim-armasm'
+Plug 'ianks/vim-tsx'
+Plug 'leafgarland/typescript-vim'
+Plug 'hdima/python-syntax'
+Plug 'jparise/vim-graphql'
+Plug 'hashivim/vim-terraform'
+Plug 'tpope/vim-bundler'
 
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+xmap <Leader>a <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
 
 " Navigation
 " =============================================================================
@@ -97,6 +107,7 @@ nnoremap <Leader>lp :lprevious<CR>
 let g:test#strategy = 'neovim'
 
 nnoremap <Leader>tf :TestFile<CR>
+nnoremap <Leader>tl :TestLast<CR>
 nnoremap <Leader>tn :TestNearest<CR>
 nnoremap <Leader>ts :TestSuite<CR>
 
@@ -105,6 +116,7 @@ nnoremap <Leader>ts :TestSuite<CR>
 nnoremap <Leader>pi :PlugInstall<CR>
 nnoremap <Leader>pu :PlugUpdate<CR>
 nnoremap <Leader>pU :PlugUpgrade<CR>
+let g:plug_window = 'split new'
 
 " Markdown
 " =============================================================================
@@ -120,16 +132,6 @@ nnoremap <Leader>f :Files<CR>
 nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
 nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
 
-" ncm2
-" =============================================================================
-set shortmess+=c
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let ncm2#matcher = 'abbrfuzzy'
-let ncm2#sorter = 'abbrfuzzy'
-
 " vim-airline
 " =============================================================================
 let g:airline_theme='gruvbox'
@@ -137,12 +139,11 @@ let g:airline_powerline_fonts = 1
 
 " ale
 " =============================================================================
-let g:ale_linters = {'fish': [], 'python': ['pyls']}
+let g:ale_linters = {'fish': [], 'ruby': ['rubocop']}
 let g:ale_fixers = {'ruby': 'rubocop', 'sql': 'sqlfmt'}
 let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+let g:ale_disable_lsp = 1
 let g:ale_ruby_rubocop_executable = 'bin/rubocop'
-let g:ale_java_javalsp_jar = '/Users/meunierd/src/java-language-server/out/fat-jar.jar'
 let g:ale_sign_column_always = 1
 nnoremap <Leader>ah :ALEHover<CR>
 nnoremap <Leader>ag :ALEGoToDefinition<CR>
@@ -159,17 +160,22 @@ command! URLDecode
 
 let g:gina#command#blame#formatter#format = '%au %=on %ti %ma%in'
 nnoremap <Leader>gb :Gina blame<CR>
+nnoremap <Leader>gs :Gina status<CR>
 nnoremap <Leader>gB :Gina browse :<CR>
-nnoremap <Leader>gw :Gina add %<CR>
+nnoremap <Leader>gw :w<CR>:Gina add %<CR>
+nnoremap <Leader>gc :Gina commit<CR>ggi
+nnoremap <Leader>gp :Gina push -u origin HEAD<CR>
+nnoremap <Leader>gP :Gina push -u origin HEAD --force<CR>
+xmap <Leader>gB :Gina browse :<CR>
 
 " Misc
 " =============================================================================
-nnoremap <Leader>e :NERDTreeToggle<CR>
-
 colorscheme gruvbox
 let g:python_highlight_all = 1
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+nnoremap <Leader>T :terminal fish<CR>
 
 " Configure Tagbar to user ripper-tags with ruby
 let g:tagbar_type_ruby = {
@@ -186,3 +192,34 @@ let g:tagbar_type_ruby = {
             \ }
 
 let g:rustc_path = 'cargo rustc --'
+
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
+
+augroup format_ruby
+  autocmd Syntax ruby syn region sorbetSig start='sig {' end='}'
+  autocmd Syntax ruby syn region sorbetSigDo start='sig do' end='end'
+  autocmd Syntax ruby hi def link sorbetSig Comment
+  autocmd Syntax ruby hi def link sorbetSigDo Comment
+augroup END
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" set updatetime=500
+" autocmd CursorHold * silent call CocActionAsync('doHover')
+let g:coc_disable_startup_warning = 1
+nmap <leader>rn <Plug>(coc-rename)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+augroup neovim_terminal
+    autocmd!
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+    " allows you to use Ctrl-c on terminal window
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END

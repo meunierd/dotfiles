@@ -1,0 +1,72 @@
+{
+	"npm.binPath": "/usr/local/bin/yarn",
+	"coc.preferences.formatOnSaveFiletypes": ["python"],
+	"tslint.autoFixOnSave": true,
+	"suggest.autoTrigger":"always",
+	"suggest.timeout": 15000,
+	"languageserver": {
+		"sorbet": {
+			"command": "srb",
+			"args": [
+				"tc",
+				"--typed",
+				"true",
+				"--enable-all-experimental-lsp-features",
+				"--lsp",
+				"--disable-watchman"
+			],
+			"filetypes": ["ruby"],
+			"rootPatterns": ["sorbet/config"]
+		},
+		"python": {
+			"command": "python",
+			"args": [
+				"-mpyls",
+				"-vv",
+				"--log-file",
+				"/tmp/lsp_python.log"
+			],
+			"trace.server": "verbose",
+			"filetypes": [
+				"python"
+			],
+			"settings": {
+				"pyls": {
+					"enable": true,
+					"trace": {
+						"server": "verbose"
+					},
+					"commandPath": "",
+					"configurationSources": [
+						"pycodestyle"
+					],
+					"plugins": {
+						"jedi_completion": {
+							"enabled": true
+						},
+						"jedi_hover": {
+							"enabled": true
+						},
+						"jedi_references": {
+							"enabled": true
+						},
+						"jedi_signature_help": {
+							"enabled": true
+						},
+						"jedi_symbols": {
+							"enabled": true,
+							"all_scopes": true
+						},
+						"preload": {
+							"enabled": true
+						},
+						"rope_completion": {
+							"enabled": true
+						},
+						"black": { "enabled": true }
+					}
+				}
+			}
+		}
+	}
+}
