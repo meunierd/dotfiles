@@ -59,7 +59,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dadbod'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Shopify/shadowenv.vim'
+if has('mac')
+  Plug 'Shopify/shadowenv.vim'
+endif
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 " Colorschemes
@@ -208,6 +210,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " set updatetime=500
 " autocmd CursorHold * silent call CocActionAsync('doHover')
 let g:coc_disable_startup_warning = 1
+if !has('mac')
+  let g:coc_node_path = '/usr/bin/nodejs'
+endif
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
