@@ -13,7 +13,7 @@ PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%~%b $vcs_info_msg_0_ $ '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -n TMUX ]; then;
+if [[ -v TMUX ]]; then;
 else
                 tmux attach -t server
 fi
