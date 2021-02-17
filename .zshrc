@@ -17,3 +17,5 @@ if [[ -v TMUX ]]; then;
 else
                 tmux attach -t server
 fi
+
+alias vim="nvim"
