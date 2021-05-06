@@ -1,8 +1,9 @@
 sudo apt-get install -y \
+	fzf \
+	mycli \
+	neovim \
 	nodejs \
 	ripgrep \
-	neovim \
-	fzf \
 	exuberant-ctags
 
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim 
