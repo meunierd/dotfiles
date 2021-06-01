@@ -207,9 +207,10 @@ augroup END
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" set updatetime=500
-" autocmd CursorHold * silent call CocActionAsync('doHover')
 let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions = [
+      \'coc-git'
+      \]
 if !has('mac')
   let g:coc_node_path = '/usr/bin/nodejs'
 endif
