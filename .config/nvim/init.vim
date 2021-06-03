@@ -209,7 +209,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:coc_disable_startup_warning = 1
 let g:coc_global_extensions = [
-      \'coc-git'
+      \'coc-git',
+      \'coc-json'
       \]
 if !has('mac')
   let g:coc_node_path = '/usr/bin/nodejs'

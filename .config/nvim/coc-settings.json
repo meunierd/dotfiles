@@ -1,6 +1,6 @@
 {
 	"npm.binPath": "/usr/local/bin/yarn",
-	"git.addGBlameToBufferVar": true,
+	"git.addGBlameToVirtualText": true,
 	"coc.preferences.formatOnSaveFiletypes": ["python"],
 	"tslint.autoFixOnSave": true,
 	"suggest.autoTrigger":"always",
