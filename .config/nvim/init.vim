@@ -213,6 +213,8 @@ let g:coc_global_extensions = [
       \]
 if !has('mac')
   let g:coc_node_path = '/usr/bin/nodejs'
+else
+  let g:coc_node_path = '/usr/local/bin/node'
 endif
 nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> gd <Plug>(coc-definition)
