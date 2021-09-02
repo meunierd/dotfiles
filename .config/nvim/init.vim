@@ -9,7 +9,7 @@ set nobackup
 set noswapfile
 set relativenumber
 set laststatus=2
-set fillchars=vert:\┃
+" set fillchars=vert:\┃
 set noshowmode
 set backspace=indent,eol,start
 set mouse=a
@@ -211,9 +211,7 @@ let g:coc_global_extensions = [
       \'coc-git',
       \'coc-json'
       \]
-if !has('mac')
-  let g:coc_node_path = '/usr/bin/nodejs'
-else
+if has('mac')
   let g:coc_node_path = '/usr/local/bin/node'
 endif
 nmap <leader>rn <Plug>(coc-rename)
