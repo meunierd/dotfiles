@@ -42,6 +42,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'tveskag/nvim-blame-line'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vader.vim'
@@ -57,7 +58,6 @@ Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-dadbod'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 if has('mac')
   Plug 'Shopify/shadowenv.vim'
 endif
@@ -140,10 +140,20 @@ let g:airline_powerline_fonts = 1
 
 " ale
 " =============================================================================
-let g:ale_linters = {'fish': [], 'ruby': ['rubocop']}
-let g:ale_fixers = {'ruby': 'rubocop', 'sql': 'sqlfmt'}
+let g:ale_completion_enabled = 1
+let g:ale_linters = {
+\   'fish': [],
+\   'ruby': ['rubocop'],
+\   'python': 'pyright'
+\}
+let g:ale_fixers = {
+\   'ruby': 'rubocop',
+\   'sql': 'sqlfmt',
+\   'python': ['black']
+\}
 let g:ale_fix_on_save = 1
-let g:ale_disable_lsp = 1
+let g:ale_python_black_auto_pipenv = 1
+let g:ale_python_auto_pipenv = 1
 let g:ale_ruby_rubocop_executable = 'bin/rubocop'
 let g:ale_sign_column_always = 1
 nnoremap <Leader>ah :ALEHover<CR>
@@ -206,19 +216,6 @@ augroup END
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:coc_disable_startup_warning = 1
-let g:coc_global_extensions = [
-      \'coc-git',
-      \'coc-json'
-      \]
-if has('mac')
-  let g:coc_node_path = '/usr/local/bin/node'
-endif
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
 
 augroup neovim_terminal
     autocmd!
