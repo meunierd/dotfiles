@@ -20,4 +20,4 @@ fi
 
 alias vim="nvim"
 
-source /usr/share/zsh-syntax-hightlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
