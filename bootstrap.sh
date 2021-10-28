@@ -4,6 +4,7 @@ sudo apt-get install -y \
 	neovim \
 	nodejs \
 	ripgrep \
+	zsh-syntax-hightlighting \
 	exuberant-ctags
 
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim 
