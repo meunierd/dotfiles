@@ -291,4 +291,7 @@ lua << EOF
   require'lspconfig'.sorbet.setup{
     capabilities = capabilities
   }
+  require'lspconfig'.pyright.setup{
+    capabilities = capabilities
+  }
 EOF
