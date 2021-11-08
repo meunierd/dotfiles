@@ -9,6 +9,8 @@ sudo apt-get install -y \
 	zsh-syntax-highlighting \
 	exuberant-ctags
 
+sudo npm install -g gtop
+
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim 
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
