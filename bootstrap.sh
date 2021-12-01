@@ -18,4 +18,3 @@ ln -f -s ~/dotfiles/.pryrc ~/.pryrc
 
 sudo -u spin nvim --headless +PlugInstall +qa
 
-sudo sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
