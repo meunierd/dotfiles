@@ -45,6 +45,13 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'mfussenegger/nvim-dap'
+Plug 'mfussenegger/nvim-dap-python'
+
+" Git
+Plug 'f-person/git-blame.nvim'
+
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'janko-m/vim-test'
@@ -52,11 +59,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
-" Plug 'tveskag/nvim-blame-line'
-Plug 'f-person/git-blame.nvim'
 Plug 'junegunn/limelight.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vader.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -73,7 +76,6 @@ Plug 'tpope/vim-dadbod'
 if has('mac')
   Plug 'Shopify/shadowenv.vim'
 endif
-Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh \| UpdateRemotePlugins' }
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
@@ -101,11 +103,7 @@ Plug 'tpope/vim-bundler'
 
 call plug#end()
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap <Leader>a <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap <Leader>a <Plug>(EasyAlign)
+let g:gitblame_enabled = 0
 
 " Navigation
 " =============================================================================
@@ -152,11 +150,9 @@ let g:airline_powerline_fonts = 1
 
 " ale
 " =============================================================================
-let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'fish': [],
 \   'ruby': ['rubocop'],
-\   'python': 'pyright'
 \}
 let g:ale_fixers = {
 \   'ruby': 'rubocop',

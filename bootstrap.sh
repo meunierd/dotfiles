@@ -17,3 +17,5 @@ ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
 
 sudo -u spin nvim --headless +PlugInstall +qa
+
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
