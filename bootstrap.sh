@@ -12,7 +12,6 @@ sudo apt-get install -y \
 sudo npm install -g gtop
 
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim 
-ln -f -s ~/dotfiles/.config/starship.toml ~/.config/starship.toml
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
