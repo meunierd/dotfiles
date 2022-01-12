@@ -5,5 +5,8 @@
 	default = current
 [alias]
 	squash = commit --amend --no-edit
-	sync = pull --rebase origin master
-	pp = !git pull --prune && git branch --merged | egrep -v master | xargs git branch -d
+	sync = pull --rebase origin main 
+	pp = !git pull --prune && git branch --merged | egrep -v main| xargs git branch -d
+
+[commit]
+	gpgsign = true

@@ -11,7 +11,10 @@ sudo apt-get install -y \
 
 sudo npm install -g gtop
 
-ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim 
+gpgconf --launch dirmngr
+gpg --keyserver keys.openpgp.org --recv 2D5F226F27773C462DDB865254E6FDFBDBBF2970
+
+ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
