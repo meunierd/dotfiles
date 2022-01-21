@@ -1,6 +1,8 @@
 sudo add-apt-repository ppa:neovim-ppa/unstable --yes
+sudo add-apt-repository ppa:jgmath2000/et --yes
 sudo apt-get update
 sudo apt-get install -y \
+	et \
 	fzf \
 	mycli \
 	neovim \
@@ -9,10 +11,9 @@ sudo apt-get install -y \
 	zsh-syntax-highlighting \
 	exuberant-ctags
 
-sudo npm install -g gtop
+sudo systemctl enable --now et.service
 
-gpgconf --launch dirmngr
-gpg --keyserver keys.openpgp.org --recv 2D5F226F27773C462DDB865254E6FDFBDBBF2970
+sudo npm install -g gtop
 
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
