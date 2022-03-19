@@ -1,5 +1,6 @@
 " General
 " =============================================================================
+let mapleader=" "
 set encoding=utf-8
 scriptencoding utf-8
 syntax enable
@@ -48,6 +49,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
+
+Plug 'williamboman/nvim-lsp-installer'
 
 " Git
 Plug 'f-person/git-blame.nvim'
@@ -284,10 +287,11 @@ lua << EOF
 
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  require'lspconfig'.pylsp.setup{
+    capabilities = capabilities
+  }
   require'lspconfig'.sorbet.setup{
     capabilities = capabilities
   }
-  require'lspconfig'.pyright.setup{
-    capabilities = capabilities
-  }
 EOF
+
