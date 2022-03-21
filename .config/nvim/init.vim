@@ -28,6 +28,14 @@ au BufRead,BufNewFile Pipfile setfiletype toml
 au BufReadPre *.nfo :setlocal fileencodings=cp437,utf-8
 au BufReadPre *.nfo :setlocal norelativenumber
 
+if $SPIN == 1
+    let g:clipboard = {
+        \ 'name': 'pbcopy',
+        \ 'copy': {'+': 'pbcopy', '*': 'pbcopy'},
+        \ 'paste': {'+': 'pbpaste', '*': 'pbpaste'},
+        \ 'cache_enabled': 1 }
+end
+
 if &shell =~# 'fish$'
   set shell=bash
 endif
@@ -44,7 +52,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mfussenegger/nvim-dap'
