@@ -181,7 +181,7 @@ nnoremap <Leader>ag :ALEGoToDefinition<CR>
 " Formatting
 " =============================================================================
 command! JSONFormat
-  \ execute ':%!python -m json.tool'
+  \ execute ':%!python3 -m json.tool'
 command! URLDecode
   \ execute ':%!python2 -c "import sys, urllib as ul; print ul.unquote_plus(sys.stdin.read())"'
 

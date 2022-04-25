@@ -15,12 +15,15 @@ sudo systemctl enable --now et.service
 
 sudo npm install -g gtop
 
+# zsh stuff
+sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
 ln -f -s ~/dotfiles/.config/nvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
 
+# plugins
 sudo -u spin nvim --headless +PlugInstall +qa
-
-sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
-
+zsh -c 'source ~/.zshrc && zplug install'
