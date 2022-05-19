@@ -24,6 +24,10 @@ ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
 
+wget 'https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb'
+sudo dpkg -i 'git-delta_0.13.0_amd64.deb'
+rm 'git-delta_0.13.0_amd64.deb'
+
 # plugins
 sudo -u spin nvim --headless +PlugInstall +qa
 zsh -c 'source ~/.zshrc && zplug install'
