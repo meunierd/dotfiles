@@ -8,7 +8,6 @@ filetype plugin indent on
 set exrc
 set nobackup
 set noswapfile
-set relativenumber
 set laststatus=2
 " set fillchars=vert:\┃
 set noshowmode
@@ -42,7 +41,16 @@ endif
 
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-call plug#begin('~/.vimpkg/bundle')
+call plug#begin('~/.config/nvim/plugins')
+
+Plug 'nvim-lua/plenary.nvim'
+
+Plug 'tanvirtin/vgit.nvim'
+
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
+Plug 'akinsho/bufferline.nvim'
 
 " LSP + Completion
 Plug 'neovim/nvim-lspconfig'
@@ -60,9 +68,6 @@ Plug 'mfussenegger/nvim-dap-python'
 
 Plug 'williamboman/nvim-lsp-installer'
 
-" Git
-Plug 'f-person/git-blame.nvim'
-
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'janko-m/vim-test'
@@ -74,7 +79,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
-Plug 'lambdalisue/gina.vim'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 
@@ -82,8 +86,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
-Plug 'tpope/vim-dadbod'
 if has('mac')
   Plug 'Shopify/shadowenv.vim'
 endif
@@ -113,8 +115,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-bundler'
 
 call plug#end()
-
-let g:gitblame_enabled = 0
 
 " Navigation
 " =============================================================================
@@ -185,19 +185,6 @@ command! JSONFormat
 command! URLDecode
   \ execute ':%!python2 -c "import sys, urllib as ul; print ul.unquote_plus(sys.stdin.read())"'
 
-" Git
-" =============================================================================
-
-let g:gina#command#blame#formatter#format = '%au %=on %ti %ma%in'
-nnoremap <Leader>gb :Gina blame<CR>
-nnoremap <Leader>gs :Gina status<CR>
-nnoremap <Leader>gB :Gina browse :<CR>
-nnoremap <Leader>gw :w<CR>:Gina add %<CR>
-nnoremap <Leader>gc :Gina commit<CR>ggi
-nnoremap <Leader>gp :Gina push -u origin HEAD<CR>
-nnoremap <Leader>gP :Gina push -u origin HEAD --force<CR>
-xmap <Leader>gB :Gina browse :<CR>
-
 " Misc
 " =============================================================================
 colorscheme gruvbox
@@ -247,7 +234,9 @@ augroup neovim_terminal
 augroup END
 
 lua << EOF
+
 -- Setup nvim-cmp.
+  require'nvim-tree'.setup()
   local cmp = require'cmp'
 
   cmp.setup({
@@ -300,6 +289,13 @@ lua << EOF
   }
   require'lspconfig'.sorbet.setup{
     capabilities = capabilities
+  }
+
+  require("bufferline").setup{}
+  require('vgit').setup{
+    live_blame = {
+      enabled = true
+    }
   }
 EOF
 
