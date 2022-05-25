@@ -178,6 +178,8 @@ let g:ale_sign_column_always = 1
 nnoremap <Leader>ah :ALEHover<CR>
 nnoremap <Leader>ag :ALEGoToDefinition<CR>
 
+nnoremap <Leader>e :NvimTreeToggle<CR>
+
 " Formatting
 " =============================================================================
 command! JSONFormat
