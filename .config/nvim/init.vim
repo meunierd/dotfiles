@@ -1,6 +1,5 @@
 " General
 " =============================================================================
-let mapleader=" "
 set encoding=utf-8
 scriptencoding utf-8
 syntax enable
@@ -9,7 +8,6 @@ set exrc
 set nobackup
 set noswapfile
 set laststatus=2
-" set fillchars=vert:\┃
 set noshowmode
 set backspace=indent,eol,start
 set mouse=a
@@ -45,8 +43,6 @@ call plug#begin('~/.config/nvim/plugins')
 
 Plug 'nvim-lua/plenary.nvim'
 
-Plug 'tanvirtin/vgit.nvim'
-
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -72,10 +68,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'janko-m/vim-test'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
@@ -92,7 +84,6 @@ endif
 
 " Colorschemes
 Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
 
 " Language Support + Syntax Highlighting
 Plug 'cespare/vim-toml'
@@ -113,6 +104,11 @@ Plug 'hdima/python-syntax'
 Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-bundler'
+
+Plug 'f-person/git-blame.nvim'
+
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope.nvim'
 
 call plug#end()
 
@@ -150,9 +146,9 @@ let g:ruby_indent_assignment_style = 'variable'
 
 " fzf.vim
 " =============================================================================
-nnoremap <Leader>f :Files<CR>
-nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
-nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
+" nnoremap <Leader>f :Files<CR>
+" nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
+" nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
 
 " vim-airline
 " =============================================================================
@@ -320,10 +316,5 @@ lua << EOF
   }
 
   require("bufferline").setup{}
-  require('vgit').setup{
-    live_blame = {
-      enabled = true
-    }
-  }
 EOF
 
