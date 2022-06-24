@@ -31,3 +31,4 @@ rm 'git-delta_0.13.0_amd64.deb'
 # plugins
 sudo -u spin nvim --headless +PlugInstall +qa
 zsh -c 'source ~/.zshrc && zplug install'
+echo "Done"
