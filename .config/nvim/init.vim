@@ -33,9 +33,9 @@ if $SPIN == 1
         \ 'cache_enabled': 1 }
 end
 
-if &shell =~# 'fish$'
-  set shell=bash
-endif
+" if &shell =~# 'fish$'
+"   set shell=bash
+" endif
 
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
@@ -106,7 +106,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'tpope/vim-bundler'
 
 Plug 'f-person/git-blame.nvim'
-
+Plug 'dinhhuy258/git.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
 
@@ -146,9 +146,11 @@ let g:ruby_indent_assignment_style = 'variable'
 
 " fzf.vim
 " =============================================================================
-" nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>f <cmd>Telescope find_files<cr>
+nnoremap <Leader>/ <cmd>Telescope live_grep<cr>
 " nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
 " nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
+nnoremap <leader>sw <cmd>lua require('telescope.builtin').grep_string({search = vim.fn.expand("<cword>")})<cr>
 
 " vim-airline
 " =============================================================================
@@ -316,5 +318,6 @@ lua << EOF
   }
 
   require("bufferline").setup{}
+  require('git').setup()
 EOF
 
