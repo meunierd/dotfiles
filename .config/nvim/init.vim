@@ -61,6 +61,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mfussenegger/nvim-dap-python'
+Plug 'suketa/nvim-dap-ruby'
 
 Plug 'williamboman/nvim-lsp-installer'
 
@@ -91,7 +92,6 @@ Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
-Plug 'fatih/vim-go'
 Plug 'uarun/vim-protobuf'
 Plug 'mgrabovsky/vim-cuesheet'
 Plug 'kchmck/vim-coffee-script'
@@ -148,8 +148,6 @@ let g:ruby_indent_assignment_style = 'variable'
 " =============================================================================
 nnoremap <Leader>f <cmd>Telescope find_files<cr>
 nnoremap <Leader>/ <cmd>Telescope live_grep<cr>
-" nnoremap <Leader>sW :execute ":Rg  " . expand("<cWORD>")<CR>
-" nnoremap <Leader>sw :execute ":Rg  " . expand("<cword>")<CR>
 nnoremap <leader>sw <cmd>lua require('telescope.builtin').grep_string({search = vim.fn.expand("<cword>")})<cr>
 
 " vim-airline
@@ -307,7 +305,7 @@ lua << EOF
     vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
   end
 
-  local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
   require'lspconfig'.pylsp.setup{
     on_attach = on_attach,
     capabilities = capabilities
@@ -316,8 +314,12 @@ lua << EOF
     on_attach = on_attach,
     capabilities = capabilities
   }
+  require'lspconfig'.gopls.setup{
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 
   require("bufferline").setup{}
   require('git').setup()
+  require('dap-ruby').setup()
 EOF
-
