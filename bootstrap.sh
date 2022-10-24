@@ -29,6 +29,6 @@ sudo dpkg -i 'git-delta_0.13.0_amd64.deb'
 rm 'git-delta_0.13.0_amd64.deb'
 
 # plugins
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -c 'qa'
 zsh -c 'source ~/.zshrc && zplug install'
 echo "Done"
