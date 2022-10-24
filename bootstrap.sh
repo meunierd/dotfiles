@@ -1,4 +1,4 @@
-sudo add-apt-repository ppa:neovim-ppa/unstable --yes
+sudo add-apt-repository ppa:neovim-ppa/stable --yes
 sudo add-apt-repository ppa:jgmath2000/et --yes
 sudo apt-get update
 sudo apt-get install -y \
