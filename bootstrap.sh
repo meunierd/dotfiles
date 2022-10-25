@@ -1,11 +1,9 @@
-sudo add-apt-repository ppa:neovim-ppa/stable --yes
 sudo add-apt-repository ppa:jgmath2000/et --yes
 sudo apt-get update
 sudo apt-get install -y \
 	et \
 	fzf \
 	mycli \
-	neovim \
 	nodejs \
 	ripgrep \
 	zsh-syntax-highlighting \
@@ -18,6 +16,9 @@ sudo npm install -g gtop
 # zsh stuff
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
+curl 'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim.appimage' -o /usr/local/bin/nvim
+chmod +x /usr/local/bin/nvim
 
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
