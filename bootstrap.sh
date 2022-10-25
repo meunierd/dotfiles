@@ -17,7 +17,7 @@ sudo npm install -g gtop
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
-curl 'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim.appimage' -o /usr/local/bin/nvim
+sudo curl 'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim.appimage' -o /usr/local/bin/nvim
 chmod +x /usr/local/bin/nvim
 
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
