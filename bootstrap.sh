@@ -17,9 +17,6 @@ sudo npm install -g gtop
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
-sudo curl 'https://github.com/neovim/neovim/releases/download/v0.8.0/nvim.appimage' -o /usr/local/bin/nvim
-chmod +x /usr/local/bin/nvim
-
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
@@ -30,6 +27,6 @@ sudo dpkg -i 'git-delta_0.13.0_amd64.deb'
 rm 'git-delta_0.13.0_amd64.deb'
 
 # plugins
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' -c 'qa'
+sudo -u spin nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 zsh -c 'source ~/.zshrc && zplug install'
 echo "Done"
