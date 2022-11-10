@@ -1,0 +1,7 @@
+return {
+  lsp = {
+    servers = {
+      "sorbet"
+    }
+  }
+}

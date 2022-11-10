@@ -21,6 +21,7 @@ git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
+ln -f -s ~/dotfiles/.config/astronvim ~/.config/astronvim
 
 wget 'https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb'
 sudo dpkg -i 'git-delta_0.13.0_amd64.deb'
