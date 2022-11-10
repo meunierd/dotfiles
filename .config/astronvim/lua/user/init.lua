@@ -3,5 +3,8 @@ return {
     servers = {
       "sorbet"
     }
+  },
+  plugins = {
+    { "tpope/vim-endwise" }
   }
 }
