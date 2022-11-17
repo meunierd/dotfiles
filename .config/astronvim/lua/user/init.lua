@@ -1,3 +1,5 @@
+vim.g['test#strategy'] = 'toggleterm'
+
 return {
   lsp = {
     servers = {
@@ -5,6 +7,9 @@ return {
     }
   },
   plugins = {
-    { "tpope/vim-endwise" }
+    init = {
+      { "tpope/vim-endwise" },
+      { "vim-test/vim-test" }
+    }
   }
 }
