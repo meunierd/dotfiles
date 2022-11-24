@@ -17,11 +17,16 @@ sudo npm install -g gtop
 sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- --yes
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+
 ln -f -s ~/dotfiles/.zshrc ~/.zshrc
 ln -f -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -f -s ~/dotfiles/.pryrc ~/.pryrc
+ln -f -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -f -s ~/dotfiles/.config/astronvim ~/.config/astronvim
+
+~/.tmux/plugins/tpm/bin/install_plugins
 
 wget 'https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb'
 sudo dpkg -i 'git-delta_0.13.0_amd64.deb'

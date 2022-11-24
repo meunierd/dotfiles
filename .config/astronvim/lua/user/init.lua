@@ -1,3 +1,4 @@
+vim.cmd.colorscheme 'catppuccin-frappe'
 return {
   lsp = {
     servers = {
@@ -11,7 +12,8 @@ return {
   plugins = {
     init = {
       { "tpope/vim-endwise" },
-      { "vim-test/vim-test" }
+      { "vim-test/vim-test" },
+      { "catppuccin/nvim" },
     },
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
