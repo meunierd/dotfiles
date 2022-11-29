@@ -26,7 +26,7 @@ ln -f -s ~/dotfiles/.pryrc ~/.pryrc
 ln -f -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 ln -f -s ~/dotfiles/.config/astronvim ~/.config/astronvim
 
-~/.tmux/plugins/tpm/bin/install_plugins
+sudo -u spin ~/.tmux/plugins/tpm/bin/install_plugins
 
 wget 'https://github.com/dandavison/delta/releases/download/0.13.0/git-delta_0.13.0_amd64.deb'
 sudo dpkg -i 'git-delta_0.13.0_amd64.deb'
