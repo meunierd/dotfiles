@@ -1,4 +1,3 @@
-vim.cmd.colorscheme 'catppuccin-frappe'
 return {
   lsp = {
     servers = {
@@ -30,5 +29,6 @@ return {
   },
   polish = function()
     vim.g['test#strategy'] = 'toggleterm'
+    vim.cmd.colorscheme 'catppuccin-frappe'
   end
 }

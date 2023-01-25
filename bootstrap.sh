@@ -34,5 +34,6 @@ rm 'git-delta_0.13.0_amd64.deb'
 
 # plugins
 sudo -u spin nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+sudo -u spin nvim --headless -c 'autocmd User PackerComplete quitall' -c 'TSInstall ruby' -c 'TSInstall lua' -c 'PackerSync'
 zsh -c 'source ~/.zshrc && zplug install'
 echo "Done"
