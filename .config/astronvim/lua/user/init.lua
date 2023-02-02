@@ -14,6 +14,9 @@ return {
       { "vim-test/vim-test" },
       { "catppuccin/nvim" },
     },
+    treesitter = {
+      ensure_installed = {"ruby"},
+    },
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       config.debug = true
@@ -30,5 +33,16 @@ return {
   polish = function()
     vim.g['test#strategy'] = 'toggleterm'
     vim.cmd.colorscheme 'catppuccin-frappe'
+    vim.api.nvim_set_keymap("n", "<Leader>Tf", ":TestFile<CR>", { desc = "Test File"})
+    vim.api.nvim_set_keymap("n", "<Leader>Tn", ":TestNearest<CR>", { desc = "Test Nearest" })
+    vim.api.nvim_set_keymap("n", "<Leader>Tl", ":TestLast<CR>", { desc = "Test Last"})
+    vim.api.nvim_set_keymap("n", "<Leader>fs", ":lua require'telescope.builtin'.grep_string{}<CR>", { desc = "Search under cursor"})
+
+    local wk = require("which-key")
+    wk.register({
+      ["<leader>"] = {
+        T = { name = "Test" }
+      }
+    })
   end
 }
