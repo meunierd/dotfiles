@@ -15,12 +15,17 @@ return {
       { "catppuccin/nvim" },
     },
     treesitter = {
-      ensure_installed = {"ruby"},
+      ensure_installed = {"ruby", "lua"},
     },
     ["null-ls"] = function(config)
       local null_ls = require "null-ls"
       config.debug = true
       config.sources = {
+        null_ls.builtins.diagnostics.rubocop.with({
+          command = "bin/rubocop",
+          timeout = 20000,
+          async = true,
+        }),
         null_ls.builtins.formatting.rubocop.with({
           command = "bin/rubocop",
           timeout = 20000,
