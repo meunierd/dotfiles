@@ -9,35 +9,18 @@ return {
     }
   },
   plugins = {
-    init = {
-      { "tpope/vim-endwise" },
-      { "vim-test/vim-test" },
-      { "catppuccin/nvim" },
+    {
+      "catppuccin/nvim",
+      as = "catppuccin",
+      config = function()
+        require("catppuccin").setup {}
+      end,
     },
-    treesitter = {
-      ensure_installed = {"ruby", "lua"},
-    },
-    ["null-ls"] = function(config)
-      local null_ls = require "null-ls"
-      config.debug = true
-      config.sources = {
-        null_ls.builtins.diagnostics.rubocop.with({
-          command = "bin/rubocop",
-          timeout = 20000,
-          async = true,
-        }),
-        null_ls.builtins.formatting.rubocop.with({
-          command = "bin/rubocop",
-          timeout = 20000,
-          async = true,
-        }),
-      }
-      return config
-    end,
+    { "vim-test/vim-test" },
   },
   polish = function()
-    vim.g['test#strategy'] = 'toggleterm'
     vim.cmd.colorscheme 'catppuccin-frappe'
+    vim.g['test#strategy'] = 'toggleterm'
     vim.api.nvim_set_keymap("n", "<Leader>Tf", ":TestFile<CR>", { desc = "Test File"})
     vim.api.nvim_set_keymap("n", "<Leader>Tn", ":TestNearest<CR>", { desc = "Test Nearest" })
     vim.api.nvim_set_keymap("n", "<Leader>Tl", ":TestLast<CR>", { desc = "Test Last"})
