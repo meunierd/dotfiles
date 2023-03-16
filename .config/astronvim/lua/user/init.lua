@@ -1,12 +1,18 @@
 return {
   lsp = {
     servers = {
-      "sorbet"
+      "sorbet",
+      "ruby_ls", 
     },
     formatting = {
       format_on_save = true,
       async = true,
-    }
+    },
+    config = {
+      ruby_ls = {
+        cmd = { "bundle", "exec", "ruby-lsp" }
+      }
+    },
   },
   plugins = {
     {
@@ -16,7 +22,30 @@ return {
         require("catppuccin").setup {}
       end,
     },
-    { "vim-test/vim-test" },
+    {
+      "vim-test/vim-test",
+      cmd = {
+        "TestFile",
+        "TestNearest",
+        "TestLast",
+      }
+    },
+    {
+      "jose-elias-alvarez/null-ls.nvim",
+      config = function()
+        local null_ls = require("null-ls")
+
+        null_ls.setup({
+          sources = {
+            null_ls.builtins.diagnostics.rubocop.with({
+              command = "bin/rubocop",
+              timeout = 20000,
+              async = true,
+            }),
+          },
+        })
+      end,
+    },
   },
   polish = function()
     vim.cmd.colorscheme 'catppuccin-frappe'
