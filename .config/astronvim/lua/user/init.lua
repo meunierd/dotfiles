@@ -31,6 +31,14 @@ return {
       }
     },
     {
+      "nvim-treesitter/nvim-treesitter",
+      config = function()
+        require("nvim-treesitter.configs").setup {
+          ensure_installed = {"lua", "ruby"},
+        }
+      end,
+    },
+    {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
