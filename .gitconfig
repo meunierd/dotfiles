@@ -9,8 +9,6 @@
 	pp = !git pull --prune && git branch --merged | egrep -v main| xargs git branch -d
 [commit]
 	gpgsign = true
-[core]
-    pager = delta
 [interactive]
     diffFilter = delta --color-only
 [delta]
