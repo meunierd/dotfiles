@@ -7,3 +7,4 @@ sh ~/dotfiles/bootstrap/apt.sh
 sh ~/dotfiles/bootstrap/zsh.sh
 sh ~/dotfiles/bootstrap/nvim.sh
 sh ~/dotfiles/bootstrap/tmux.sh
+sh ~/dotfiles/bootstrap/lazygit.sh
