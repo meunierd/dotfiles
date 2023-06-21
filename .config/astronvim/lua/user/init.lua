@@ -39,6 +39,20 @@ return {
       end,
     },
     {
+      "rrethy/nvim-treesitter-endwise",
+      dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+      },
+      ft = "ruby",
+      config = function()
+        require('nvim-treesitter.configs').setup {
+          endwise = {
+            enable = true,
+          },
+        }
+      end
+    },
+    {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
