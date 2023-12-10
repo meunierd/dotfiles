@@ -7,5 +7,5 @@ set -x GOPATH $HOME
 set -x QUOTING_STYLE literal
 starship init fish | source
 
-status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source; and pyenv virtualenv-init - | source
+# opam configuration
+source /home/meunierd/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
