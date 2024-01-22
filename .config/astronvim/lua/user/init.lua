@@ -53,6 +53,14 @@ return {
       end
     },
     {
+      "lewis6991/gitsigns.nvim",
+      config = function()
+        require('gitsigns').setup {
+          current_line_blame=true,
+        }
+      end,
+    },
+    {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
         local null_ls = require("null-ls")
