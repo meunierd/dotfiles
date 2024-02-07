@@ -8,3 +8,4 @@ sh ~/dotfiles/bootstrap/zsh.sh
 sh ~/dotfiles/bootstrap/nvim.sh
 sh ~/dotfiles/bootstrap/tmux.sh
 sh ~/dotfiles/bootstrap/lazygit.sh
+sh ~/dotfiles/bootstrap/yq.sh
