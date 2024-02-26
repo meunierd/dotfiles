@@ -1,3 +1,3 @@
 function iadl
-  ia download $argv (ia list $argv | fzf -m)
+  ia download -t 300 $argv (ia list $argv | fzf -m)
 end
