@@ -1,5 +1,4 @@
 #!/bin/sh
 
-ln -f -s ~/dotfiles/.config/astronvim ~/.config/astronvim
-git clone --depth 1 https://github.com/AstroNvim/template ~/.config/nvim
+ln -s ~/src/dotfiles/.config/nvim ~/.config/nvim
 nvim --headless -c 'qall'
