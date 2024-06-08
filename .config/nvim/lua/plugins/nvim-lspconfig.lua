@@ -8,5 +8,9 @@ return {
       cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
       root_dir = util.root_pattern("sorbet"),
     })
+
+    lspconfig.pyright.setup({
+      root_dir = util.root_pattern("poetry.lock"),
+    })
   end,
 }
