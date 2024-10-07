@@ -7,4 +7,6 @@ local map = LazyVim.safe_keymap_set
 map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "ToggleTerm float" })
 map("n", "<leader>ts", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "ToggleTerm split" })
 map("n", "<leader>tv", "<cmd>ToggleTerm direction=vertical<cr>", { desc = "ToggleTerm vertical" })
+map("n", "<leader>Tf", "<cmd>TestFile<cr>", { desc = "Test file" })
+map("n", "<leader>Tn", "<cmd>TestNearest<cr>", { desc = "Test nearest" })
 map("n", "<leader>a", "<cmd>AerialToggle!<CR>")
